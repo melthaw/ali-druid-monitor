@@ -1,0 +1,5 @@
+rootProject.name = 'ali-druid-monitor'
+include 'druid'
+include 'rabbitmq'
+include 'sample'
+include 'monitor'

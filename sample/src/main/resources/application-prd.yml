@@ -1,0 +1,20 @@
+logging:
+  file: /var/log/lutra/server.log
+  level:
+    in.clouthink.lutra: DEBUG
+
+endpoints:
+  enabled: false
+  health:
+    enabled: true
+
+server:
+  port: 80
+  address: 0.0.0.0
+
+spring:
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}

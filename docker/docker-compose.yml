@@ -1,0 +1,24 @@
+version: '2.1'
+services:
+  mysql:
+    container_name: lutra_mysql
+    build:
+      context: mysql
+      dockerfile: Dockerfile
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --lower_case_table_names=0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_change_me
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin_password_change_me
+      MYSQL_DATABASE: sakila
+
+  rabbitmq:
+    container_name: lutra_rabbitmq
+    image: rabbitmq:3-management
+    ports:
+      - "4367:4367"
+      - "5671:5671"
+      - "5672:5672"
+      - "15672:15672"
