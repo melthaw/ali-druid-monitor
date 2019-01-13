@@ -7,10 +7,12 @@ import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration
 import org.springframework.boot.web.support.ErrorPageFilter;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootApplication
+@EnableJpaRepositories("in.clouthink.lutra.sample.repository")
 @EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
 @Import({LutraWebMvcConfigurer.class, })
 @EnableAsync
