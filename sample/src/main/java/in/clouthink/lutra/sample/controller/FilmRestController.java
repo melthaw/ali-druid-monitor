@@ -15,7 +15,7 @@ public class FilmRestController {
     @Autowired
     private FilmRepository filmRepository;
 
-    @GetMapping("actors")
+    @GetMapping("films")
     public Page<Film> listAll(@PageableDefault(value = 20) Pageable pageable) {
         return filmRepository.findAll(pageable);
     }

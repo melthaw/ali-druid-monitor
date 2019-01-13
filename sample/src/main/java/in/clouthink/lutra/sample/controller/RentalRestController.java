@@ -15,7 +15,7 @@ public class RentalRestController {
     @Autowired
     private RentalRepository rentalRepository;
 
-    @GetMapping("actors")
+    @GetMapping("rentals")
     public Page<Rental> listAll(@PageableDefault(value = 20) Pageable pageable) {
         return rentalRepository.findAll(pageable);
     }

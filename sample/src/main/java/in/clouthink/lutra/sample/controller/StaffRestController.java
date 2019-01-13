@@ -15,7 +15,7 @@ public class StaffRestController {
     @Autowired
     private StaffRepository staffRepository;
 
-    @GetMapping("actors")
+    @GetMapping("staffs")
     public Page<Staff> listAll(@PageableDefault(value = 20) Pageable pageable) {
         return staffRepository.findAll(pageable);
     }

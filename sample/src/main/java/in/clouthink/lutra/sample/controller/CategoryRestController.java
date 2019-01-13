@@ -15,7 +15,7 @@ public class CategoryRestController {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @GetMapping("actors")
+    @GetMapping("categories")
     public Page<Category> listAll(@PageableDefault(value = 20) Pageable pageable) {
         return categoryRepository.findAll(pageable);
     }

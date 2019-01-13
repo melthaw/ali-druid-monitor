@@ -15,7 +15,7 @@ public class PaymentRestController {
     @Autowired
     private PaymentRepository paymentRepository;
 
-    @GetMapping("actors")
+    @GetMapping("payments")
     public Page<Payment> listAll(@PageableDefault(value = 20) Pageable pageable) {
         return paymentRepository.findAll(pageable);
     }

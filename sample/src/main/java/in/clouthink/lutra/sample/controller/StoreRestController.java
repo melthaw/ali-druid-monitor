@@ -15,7 +15,7 @@ public class StoreRestController {
     @Autowired
     private StoreRepository storeRepository;
 
-    @GetMapping("actors")
+    @GetMapping("stores")
     public Page<Store> listAll(@PageableDefault(value = 20) Pageable pageable) {
         return storeRepository.findAll(pageable);
     }

@@ -15,7 +15,7 @@ public class AddressRestController {
     @Autowired
     private AddressRepository addressRepository;
 
-    @GetMapping("actors")
+    @GetMapping("addresses")
     public Page<Address> listAll(@PageableDefault(value = 20) Pageable pageable) {
         return addressRepository.findAll(pageable);
     }

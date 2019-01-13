@@ -15,7 +15,7 @@ public class LanguageRestController {
     @Autowired
     private LanguageRepository languageRepository;
 
-    @GetMapping("actors")
+    @GetMapping("languages")
     public Page<Language> listAll(@PageableDefault(value = 20) Pageable pageable) {
         return languageRepository.findAll(pageable);
     }

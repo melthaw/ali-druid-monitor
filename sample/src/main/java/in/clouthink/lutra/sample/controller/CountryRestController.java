@@ -15,7 +15,7 @@ public class CountryRestController {
     @Autowired
     private CountryRepository countryRepository;
 
-    @GetMapping("actors")
+    @GetMapping("countries")
     public Page<Country> listAll(@PageableDefault(value = 20) Pageable pageable) {
         return countryRepository.findAll(pageable);
     }

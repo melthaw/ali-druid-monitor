@@ -15,7 +15,7 @@ public class CityRestController {
     @Autowired
     private CityRepository cityRepository;
 
-    @GetMapping("actors")
+    @GetMapping("cities")
     public Page<City> listAll(@PageableDefault(value = 20) Pageable pageable) {
         return cityRepository.findAll(pageable);
     }

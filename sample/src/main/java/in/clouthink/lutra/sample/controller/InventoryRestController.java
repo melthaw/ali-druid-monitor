@@ -15,7 +15,7 @@ public class InventoryRestController {
     @Autowired
     private InventoryRepository inventoryRepository;
 
-    @GetMapping("actors")
+    @GetMapping("inventories")
     public Page<Inventory> listAll(@PageableDefault(value = 20) Pageable pageable) {
         return inventoryRepository.findAll(pageable);
     }
