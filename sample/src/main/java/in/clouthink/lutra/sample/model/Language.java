@@ -17,7 +17,7 @@ public class Language {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "inventory_id")
+    @Column(name = "language_id")
     private Integer id;
 
     @Basic

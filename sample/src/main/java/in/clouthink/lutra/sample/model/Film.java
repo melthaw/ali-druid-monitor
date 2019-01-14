@@ -43,7 +43,7 @@ public class Film {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "year")
+    @Column(name = "release_year")
     private Integer year;
 
     @ManyToOne(fetch = FetchType.LAZY)

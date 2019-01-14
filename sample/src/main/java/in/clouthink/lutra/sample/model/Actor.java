@@ -18,7 +18,7 @@ public class Actor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "address_id")
+    @Column(name = "actor_id")
     private Integer id;
 
     @Basic
