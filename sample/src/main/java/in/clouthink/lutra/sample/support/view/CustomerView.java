@@ -1,8 +1,24 @@
 package in.clouthink.lutra.sample.support.view;
 
+import in.clouthink.lutra.sample.model.Customer;
+import org.springframework.beans.BeanUtils;
+
 import java.util.Date;
 
 public class CustomerView {
+
+    public static CustomerView from(Customer customer) {
+        CustomerView result = new CustomerView();
+        BeanUtils.copyProperties(customer, result);
+        if (customer.getStore() != null) {
+            result.setStoreId(customer.getStore().getId());
+        }
+        if (customer.getAddress() != null) {
+            result.setAddressId(customer.getAddress().getId());
+            result.setAddressName(customer.getAddress().getAddress());
+        }
+        return result;
+    }
 
     private Integer id;
 
@@ -12,9 +28,11 @@ public class CustomerView {
 
     private String email;
 
-    private StoreView store;
+    private Integer storeId;
 
-    private AddressView address;
+    private Integer addressId;
+
+    private String addressName;
 
     private Boolean active;
 
@@ -54,20 +72,28 @@ public class CustomerView {
         this.email = email;
     }
 
-    public StoreView getStore() {
-        return store;
+    public Integer getStoreId() {
+        return storeId;
     }
 
-    public void setStore(StoreView store) {
-        this.store = store;
+    public void setStoreId(Integer storeId) {
+        this.storeId = storeId;
     }
 
-    public AddressView getAddress() {
-        return address;
+    public Integer getAddressId() {
+        return addressId;
     }
 
-    public void setAddress(AddressView address) {
-        this.address = address;
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
+    }
+
+    public String getAddressName() {
+        return addressName;
+    }
+
+    public void setAddressName(String addressName) {
+        this.addressName = addressName;
     }
 
     public Boolean getActive() {

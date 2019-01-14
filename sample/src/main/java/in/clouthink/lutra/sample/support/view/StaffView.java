@@ -1,9 +1,25 @@
 package in.clouthink.lutra.sample.support.view;
 
+import in.clouthink.lutra.sample.model.Staff;
+import org.springframework.beans.BeanUtils;
+
 import java.util.Date;
 
 
 public class StaffView {
+
+    public static StaffView from(Staff staff) {
+        StaffView result = new StaffView();
+        BeanUtils.copyProperties(staff, result);
+        if (staff.getStore() != null) {
+            result.setStoreId(staff.getStore().getId());
+        }
+        if (staff.getAddress() != null) {
+            result.setAddressId(staff.getAddress().getId());
+            result.setAddressName(staff.getAddress().getAddress());
+        }
+        return result;
+    }
 
     private Integer id;
 
@@ -11,19 +27,17 @@ public class StaffView {
 
     private String lastName;
 
-    private AddressView address;
+    private Integer addressId;
 
-    private byte[] picture;
+    private String addressName;
 
     private String email;
 
-    private StoreView store;
+    private Integer storeId;
 
     private Boolean active;
 
     private String username;
-
-    private String password;
 
     private Date updatedAt;
 
@@ -51,22 +65,6 @@ public class StaffView {
         this.lastName = lastName;
     }
 
-    public AddressView getAddress() {
-        return address;
-    }
-
-    public void setAddress(AddressView address) {
-        this.address = address;
-    }
-
-    public byte[] getPicture() {
-        return picture;
-    }
-
-    public void setPicture(byte[] picture) {
-        this.picture = picture;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -75,12 +73,28 @@ public class StaffView {
         this.email = email;
     }
 
-    public StoreView getStore() {
-        return store;
+    public Integer getAddressId() {
+        return addressId;
     }
 
-    public void setStore(StoreView store) {
-        this.store = store;
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
+    }
+
+    public String getAddressName() {
+        return addressName;
+    }
+
+    public void setAddressName(String addressName) {
+        this.addressName = addressName;
+    }
+
+    public Integer getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Integer storeId) {
+        this.storeId = storeId;
     }
 
     public Boolean getActive() {
@@ -97,14 +111,6 @@ public class StaffView {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public Date getUpdatedAt() {

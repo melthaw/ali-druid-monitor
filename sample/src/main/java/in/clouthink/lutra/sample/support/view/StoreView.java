@@ -1,15 +1,39 @@
 package in.clouthink.lutra.sample.support.view;
 
 
+import in.clouthink.lutra.sample.model.Store;
+import org.springframework.beans.BeanUtils;
+
 import java.util.Date;
 
 public class StoreView {
 
+    public static StoreView from(Store store) {
+        StoreView result = new StoreView();
+        BeanUtils.copyProperties(store, result);
+        if (store.getManager() != null) {
+            result.setManagerId(store.getManager().getId());
+            result.setManagerFirstName(store.getManager().getFirstName());
+            result.setManagerLastName(store.getManager().getLastName());
+        }
+        if (store.getAddress() != null) {
+            result.setAddressId(store.getAddress().getId());
+            result.setAddressName(store.getAddress().getAddress());
+        }
+        return result;
+    }
+
     private Integer id;
 
-    private StaffView manager;
+    private Integer managerId;
 
-    private AddressView address;
+    private String managerFirstName;
+
+    private String managerLastName;
+
+    private Integer addressId;
+
+    private String addressName;
 
     private Date updatedAt;
 
@@ -21,20 +45,44 @@ public class StoreView {
         this.id = id;
     }
 
-    public StaffView getManager() {
-        return manager;
+    public Integer getManagerId() {
+        return managerId;
     }
 
-    public void setManager(StaffView manager) {
-        this.manager = manager;
+    public void setManagerId(Integer managerId) {
+        this.managerId = managerId;
     }
 
-    public AddressView getAddress() {
-        return address;
+    public String getManagerFirstName() {
+        return managerFirstName;
     }
 
-    public void setAddress(AddressView address) {
-        this.address = address;
+    public void setManagerFirstName(String managerFirstName) {
+        this.managerFirstName = managerFirstName;
+    }
+
+    public String getManagerLastName() {
+        return managerLastName;
+    }
+
+    public void setManagerLastName(String managerLastName) {
+        this.managerLastName = managerLastName;
+    }
+
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
+    }
+
+    public String getAddressName() {
+        return addressName;
+    }
+
+    public void setAddressName(String addressName) {
+        this.addressName = addressName;
     }
 
     public Date getUpdatedAt() {

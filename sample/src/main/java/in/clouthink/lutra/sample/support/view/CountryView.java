@@ -1,12 +1,21 @@
 package in.clouthink.lutra.sample.support.view;
 
+import in.clouthink.lutra.sample.model.Country;
+import org.springframework.beans.BeanUtils;
+
 import java.util.Date;
 
 public class CountryView {
 
+    public static CountryView from(Country country) {
+        CountryView result = new CountryView();
+        BeanUtils.copyProperties(country, result);
+        return result;
+    }
+
     private Integer id;
 
-    private String country ;
+    private String country;
 
     private Date updatedAt;
 

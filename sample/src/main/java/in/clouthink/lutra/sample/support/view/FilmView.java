@@ -1,10 +1,28 @@
 package in.clouthink.lutra.sample.support.view;
 
+import in.clouthink.lutra.sample.model.Film;
+import in.clouthink.lutra.sample.model.Language;
+import org.springframework.beans.BeanUtils;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
 
 public class FilmView {
+
+    public static FilmView from(Film film) {
+        FilmView result = new FilmView();
+        BeanUtils.copyProperties(film, result);
+        if (film.getLanguage() != null) {
+            result.setLanguageId(film.getLanguage().getId());
+            result.setLanguageName(film.getLanguage().getName());
+        }
+        if (film.getOriginalLanguage() != null) {
+            result.setOriginalLanguageId(film.getOriginalLanguage().getId());
+            result.setOriginalLanguageName(film.getOriginalLanguage().getName());
+        }
+        return result;
+    }
 
     private Integer id;
 
@@ -14,9 +32,13 @@ public class FilmView {
 
     private Integer year;
 
-    private LanguageView language;
+    private Integer languageId;
 
-    private LanguageView originalLanguage;
+    private String languageName;
+
+    private Integer originalLanguageId;
+
+    private String originalLanguageName;
 
     private Integer rentalDuration;
 
@@ -64,20 +86,36 @@ public class FilmView {
         this.year = year;
     }
 
-    public LanguageView getLanguage() {
-        return language;
+    public Integer getLanguageId() {
+        return languageId;
     }
 
-    public void setLanguage(LanguageView language) {
-        this.language = language;
+    public void setLanguageId(Integer languageId) {
+        this.languageId = languageId;
     }
 
-    public LanguageView getOriginalLanguage() {
-        return originalLanguage;
+    public String getLanguageName() {
+        return languageName;
     }
 
-    public void setOriginalLanguage(LanguageView originalLanguage) {
-        this.originalLanguage = originalLanguage;
+    public void setLanguageName(String languageName) {
+        this.languageName = languageName;
+    }
+
+    public Integer getOriginalLanguageId() {
+        return originalLanguageId;
+    }
+
+    public void setOriginalLanguageId(Integer originalLanguageId) {
+        this.originalLanguageId = originalLanguageId;
+    }
+
+    public String getOriginalLanguageName() {
+        return originalLanguageName;
+    }
+
+    public void setOriginalLanguageName(String originalLanguageName) {
+        this.originalLanguageName = originalLanguageName;
     }
 
     public Integer getRentalDuration() {

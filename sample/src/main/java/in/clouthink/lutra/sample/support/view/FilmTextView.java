@@ -1,6 +1,15 @@
 package in.clouthink.lutra.sample.support.view;
 
-public class FilmText {
+import in.clouthink.lutra.sample.model.FilmText;
+import org.springframework.beans.BeanUtils;
+
+public class FilmTextView {
+
+    public static FilmTextView from(FilmText filmText) {
+        FilmTextView result = new FilmTextView();
+        BeanUtils.copyProperties(filmText, result);
+        return result;
+    }
 
     private Integer id;
 

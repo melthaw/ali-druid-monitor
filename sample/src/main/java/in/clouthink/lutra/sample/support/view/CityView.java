@@ -1,15 +1,30 @@
 package in.clouthink.lutra.sample.support.view;
 
 
+import in.clouthink.lutra.sample.model.City;
+import org.springframework.beans.BeanUtils;
+
 import java.util.Date;
 
 public class CityView {
 
+    public static CityView from(City city) {
+        CityView result = new CityView();
+        BeanUtils.copyProperties(city, result);
+        if (city.getCountry() != null) {
+            result.setCountryId(city.getCountry().getId());
+            result.setCountryName(city.getCountry().getCountry());
+        }
+        return result;
+    }
+
     private Integer id;
 
-    private String city ;
+    private String city;
 
-    private CountryView country;
+    private Integer countryId;
+
+    private String countryName;
 
     private Date updatedAt;
 
@@ -29,12 +44,20 @@ public class CityView {
         this.city = city;
     }
 
-    public CountryView getCountry() {
-        return country;
+    public Integer getCountryId() {
+        return countryId;
     }
 
-    public void setCountry(CountryView country) {
-        this.country = country;
+    public void setCountryId(Integer countryId) {
+        this.countryId = countryId;
+    }
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 
     public Date getUpdatedAt() {

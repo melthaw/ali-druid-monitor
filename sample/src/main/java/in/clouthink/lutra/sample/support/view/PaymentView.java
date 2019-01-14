@@ -1,17 +1,47 @@
 package in.clouthink.lutra.sample.support.view;
 
+import in.clouthink.lutra.sample.model.Payment;
+import org.springframework.beans.BeanUtils;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class PaymentView {
 
+    public static PaymentView from(Payment payment) {
+        PaymentView result = new PaymentView();
+        BeanUtils.copyProperties(payment, result);
+        if (payment.getRental() != null) {
+            result.setRentalId(payment.getRental().getId());
+        }
+        if (payment.getCustomer() != null) {
+            result.setCustomerId(payment.getCustomer().getId());
+            result.setCustomerFirstName(payment.getCustomer().getFirstName());
+            result.setCustomerLastName(payment.getCustomer().getLastName());
+        }
+        if (payment.getStaff() != null) {
+            result.setStaffId(payment.getStaff().getId());
+            result.setStaffFirstName(payment.getStaff().getFirstName());
+            result.setStaffLastName(payment.getStaff().getLastName());
+        }
+        return result;
+    }
+
     private Integer id;
 
-    private CustomerView customer;
+    private Integer customerId;
 
-    private StaffView staff;
+    private String customerFirstName;
 
-    private RentalView rental;
+    private String customerLastName;
+
+    private Integer staffId;
+
+    private String staffFirstName;
+
+    private String staffLastName;
+
+    private Integer rentalId;
 
     private BigDecimal amount;
 
@@ -27,28 +57,60 @@ public class PaymentView {
         this.id = id;
     }
 
-    public CustomerView getCustomer() {
-        return customer;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(CustomerView customer) {
-        this.customer = customer;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
-    public StaffView getStaff() {
-        return staff;
+    public String getCustomerFirstName() {
+        return customerFirstName;
     }
 
-    public void setStaff(StaffView staff) {
-        this.staff = staff;
+    public void setCustomerFirstName(String customerFirstName) {
+        this.customerFirstName = customerFirstName;
     }
 
-    public RentalView getRental() {
-        return rental;
+    public String getCustomerLastName() {
+        return customerLastName;
     }
 
-    public void setRental(RentalView rental) {
-        this.rental = rental;
+    public void setCustomerLastName(String customerLastName) {
+        this.customerLastName = customerLastName;
+    }
+
+    public Integer getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(Integer staffId) {
+        this.staffId = staffId;
+    }
+
+    public String getStaffFirstName() {
+        return staffFirstName;
+    }
+
+    public void setStaffFirstName(String staffFirstName) {
+        this.staffFirstName = staffFirstName;
+    }
+
+    public String getStaffLastName() {
+        return staffLastName;
+    }
+
+    public void setStaffLastName(String staffLastName) {
+        this.staffLastName = staffLastName;
+    }
+
+    public Integer getRentalId() {
+        return rentalId;
+    }
+
+    public void setRentalId(Integer rentalId) {
+        this.rentalId = rentalId;
     }
 
     public BigDecimal getAmount() {

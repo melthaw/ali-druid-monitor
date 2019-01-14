@@ -1,8 +1,17 @@
 package in.clouthink.lutra.sample.support.view;
 
+import in.clouthink.lutra.sample.model.Language;
+import org.springframework.beans.BeanUtils;
+
 import java.util.Date;
 
 public class LanguageView {
+
+    public static LanguageView from(Language language) {
+        LanguageView result = new LanguageView();
+        BeanUtils.copyProperties(language, result);
+        return result;
+    }
 
     private Integer id;
 

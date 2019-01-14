@@ -1,8 +1,17 @@
 package in.clouthink.lutra.sample.support.view;
 
+import in.clouthink.lutra.sample.model.Category;
+import org.springframework.beans.BeanUtils;
+
 import java.util.Date;
 
 public class CategoryView {
+
+    public static CategoryView from(Category category) {
+        CategoryView result = new CategoryView();
+        BeanUtils.copyProperties(category, result);
+        return result;
+    }
 
     private Integer id;
 
