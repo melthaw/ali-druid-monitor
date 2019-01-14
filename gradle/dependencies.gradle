@@ -1,6 +1,11 @@
 ext {
     springBootVersion = "1.5.15.RELEASE"
     springCloudVersion = "Dalston.SR1"
+    pojomaticVersion = "2.0.1"
+    jacksonVersion = "2.4.0"
+    jacksonCodehausVersion = "1.9.13"
+    commonsLangVersion = "2.6"
+    mysqlConnectorVersion="5.1.37"
 
     libs = [
             commons          : [
@@ -14,34 +19,13 @@ ext {
                     "org.apache.httpcomponents:httpcore:4.4.9",
                     "org.apache.httpcomponents:httpclient:4.5.5"
             ],
-            springBoot       : [
-                    "org.springframework.boot:spring-boot-starter:${springBootVersion}",
-                    "org.springframework.boot:spring-boot-starter-web:${springBootVersion}",
-                    "org.springframework.boot:spring-boot-starter-mail:${springBootVersion}",
-                    "org.springframework.boot:spring-boot-starter-aop:${springBootVersion}",
-                    "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
-            ],
-            springDataMongodb: [
-                    "org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}",
-            ],
-            springRedis      : [
-                    "org.springframework.boot:spring-boot-starter-redis:${springBootVersion}",
-            ],
-            springAMQP      : [
-                    "org.springframework.boot:spring-boot-starter-amqp:${springBootVersion}",
-            ],
-            springSecurity   : [
-                    "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
-            ],
             swagger2         : [
                     "io.swagger:swagger-annotations:1.5.2",
                     "io.springfox:springfox-swagger2:2.2.2",
                     "io.springfox:springfox-swagger-ui:2.2.2"
             ],
             test             : [
-                    "junit:junit:4.12",
-                    "org.springframework.boot:spring-boot-starter-test:${springBootVersion}",
-                    "org.springframework.security:spring-security-test:4.0.1.RELEASE"
+                    "junit:junit:4.12"
             ]
     ]
 }

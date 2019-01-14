@@ -47,6 +47,13 @@ subprojects {
 
     sourceCompatibility = JavaVersion.VERSION_1_8
 
+    repositories {
+        mavenCentral()
+        maven {
+            url "http://nexus.talanlabs.com/content/repositories/releases/"
+        }
+    }
+
     jar {
         baseName = project['artifactId']
     }

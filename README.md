@@ -9,3 +9,5 @@ and send them to data center. Then the druid monitor show the data in a central 
 # Quick Start
 
 
+# Configuration
+

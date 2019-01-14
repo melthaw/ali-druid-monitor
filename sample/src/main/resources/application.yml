@@ -20,5 +20,26 @@ spring:
     date-format: yyyy-MM-dd'T'HH:mm:ss.sss'Z'
     serialization:
       write-dates-as-timestamps: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: ${JPA_DIALECT:org.hibernate.dialect.MySQL5Dialect}
+      javax:
+        persistence:
+          query:
+            timeout: 300000
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url:  ${DB_URL:jdbc:mysql://127.0.0.1:3306/sakila?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true}
+    driver-class-name: ${DB_DRIVER:com.mysql.jdbc.Driver}
+    username:  ${DB_USER:admin}
+    password:  ${DB_PASSWORD:admin_password_change_me}
+    test-while-idle: true
+    validation-query: SELECT 1 FROM DUAL
+    test-on-borrow: true
   profiles:
-    active: prd
+    active: production
