@@ -1,7 +1,8 @@
 package in.clouthink.lutra.sample.controller;
 
 import in.clouthink.lutra.sample.model.Inventory;
-import in.clouthink.lutra.sample.repository.InventoryRepository;
+import in.clouthink.lutra.sample.support.InventoryRestSupport;
+import in.clouthink.lutra.sample.support.view.InventoryView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class InventoryRestController {
 
     @Autowired
-    private InventoryRepository inventoryRepository;
+    private InventoryRestSupport inventoryRestSupport;
 
     @GetMapping("inventories")
-    public Page<Inventory> listAll(@PageableDefault(value = 20) Pageable pageable) {
-        return inventoryRepository.findAll(pageable);
+    public Page<InventoryView> listAll(@PageableDefault(value = 20) Pageable pageable) {
+        return inventoryRestSupport.listAll(pageable);
     }
 
 }

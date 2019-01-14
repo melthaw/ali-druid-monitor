@@ -1,8 +1,8 @@
 package in.clouthink.lutra.sample.support.impl;
 
-import in.clouthink.lutra.sample.model.Store;
 import in.clouthink.lutra.sample.repository.StoreRepository;
 import in.clouthink.lutra.sample.support.StoreRestSupport;
+import in.clouthink.lutra.sample.support.view.StoreView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,8 +15,8 @@ public class StoreRestSupportImpl implements StoreRestSupport {
     @Autowired
     private StoreRepository storeRepository;
 
-    public Page<Store> listAll(@PageableDefault(value = 20) Pageable pageable) {
-        return storeRepository.findAll(pageable);
+    public Page<StoreView> listAll(@PageableDefault(value = 20) Pageable pageable) {
+        return storeRepository.findAll(pageable).map(StoreView::from);
     }
 
 }

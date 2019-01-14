@@ -1,7 +1,7 @@
 package in.clouthink.lutra.sample.controller;
 
-import in.clouthink.lutra.sample.model.Payment;
-import in.clouthink.lutra.sample.repository.PaymentRepository;
+import in.clouthink.lutra.sample.support.PaymentRestSupport;
+import in.clouthink.lutra.sample.support.view.PaymentView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class PaymentRestController {
 
     @Autowired
-    private PaymentRepository paymentRepository;
+    private PaymentRestSupport   paymentRestSupport;
 
     @GetMapping("payments")
-    public Page<Payment> listAll(@PageableDefault(value = 20) Pageable pageable) {
-        return paymentRepository.findAll(pageable);
+    public Page<PaymentView> listAll(@PageableDefault(value = 20) Pageable pageable) {
+        return paymentRestSupport.listAll(pageable);
     }
 
 }

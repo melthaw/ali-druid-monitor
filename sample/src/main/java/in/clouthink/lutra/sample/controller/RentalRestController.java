@@ -1,7 +1,7 @@
 package in.clouthink.lutra.sample.controller;
 
-import in.clouthink.lutra.sample.model.Rental;
-import in.clouthink.lutra.sample.repository.RentalRepository;
+import in.clouthink.lutra.sample.support.RentalRestSupport;
+import in.clouthink.lutra.sample.support.view.RentalView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class RentalRestController {
 
     @Autowired
-    private RentalRepository rentalRepository;
+    private RentalRestSupport rentalRestSupport;
 
     @GetMapping("rentals")
-    public Page<Rental> listAll(@PageableDefault(value = 20) Pageable pageable) {
-        return rentalRepository.findAll(pageable);
+    public Page<RentalView> listAll(@PageableDefault(value = 20) Pageable pageable) {
+        return rentalRestSupport.listAll(pageable);
     }
 
 }

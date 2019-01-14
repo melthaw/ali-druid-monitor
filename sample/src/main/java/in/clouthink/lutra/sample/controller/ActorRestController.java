@@ -1,7 +1,8 @@
 package in.clouthink.lutra.sample.controller;
 
 import in.clouthink.lutra.sample.model.Actor;
-import in.clouthink.lutra.sample.repository.ActorRepository;
+import in.clouthink.lutra.sample.support.ActorRestSupport;
+import in.clouthink.lutra.sample.support.view.ActorView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ActorRestController {
 
     @Autowired
-    private ActorRepository actorRepository;
+    private ActorRestSupport actorRestSupport;
 
     @GetMapping("actors")
-    public Page<Actor> listAll(@PageableDefault(value = 20) Pageable pageable) {
-        return actorRepository.findAll(pageable);
+    public Page<ActorView> listAll(@PageableDefault(value = 20) Pageable pageable) {
+        return actorRestSupport.listAll(pageable);
     }
 
 }

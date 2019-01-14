@@ -1,7 +1,7 @@
 package in.clouthink.lutra.sample.controller;
 
-import in.clouthink.lutra.sample.model.City;
-import in.clouthink.lutra.sample.repository.CityRepository;
+import in.clouthink.lutra.sample.support.CityRestSupport;
+import in.clouthink.lutra.sample.support.view.CityView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class CityRestController {
 
     @Autowired
-    private CityRepository cityRepository;
+    private CityRestSupport cityRestSupport;
 
     @GetMapping("cities")
-    public Page<City> listAll(@PageableDefault(value = 20) Pageable pageable) {
-        return cityRepository.findAll(pageable);
+    public Page<CityView> listAll(@PageableDefault(value = 20) Pageable pageable) {
+        return cityRestSupport.listAll(pageable);
     }
 
 }
